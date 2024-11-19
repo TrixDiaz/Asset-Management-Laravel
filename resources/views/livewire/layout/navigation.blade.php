@@ -34,10 +34,20 @@ new class extends Component
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
+
+
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <div class="flex items-center relative mx-2">
+                    <div class="absolute w-4 h-4 bg-red-500 border-1 border-white rounded-full top-0 right-0 transform translate-x-1/2 -translate-y-1/2 dark:border-gray-900 flex justify-center items-center text-white text-xs">
+                        <span style="font-size: 10px;" class="text-white flex justify-center items-center">11</span>
+                    </div>
+                    <x-icons.bell-icon class="h-5 w-5 text-gray-500 dark:text-gray-400 cursor-pointer"
+                        type="button" data-drawer-target="drawer-right-notification" data-drawer-show="drawer-right-notification" data-drawer-placement="right" aria-controls="drawer-right-notification" />
+                </div>
+
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150 uppercase">
@@ -52,6 +62,24 @@ new class extends Component
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link class="hover:bg-white dark:hover:bg-transparent dark:focus:bg-transparent">
+                            <!-- Button to toggle dark mode -->
+                            <div class="flex items-center justify-center space-x-4">
+                                <!-- Light mode button -->
+                                <button id="theme-toggle-light" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 rounded-lg text-sm p-2.5">
+                                    <x-icons.moon-icon />
+                                </button>
+                                <!-- Dark mode button -->
+                                <button id="theme-toggle-dark" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 rounded-lg text-sm p-2.5">
+                                    <x-icons.sun-icon />
+                                </button>
+                                <!-- System mode button -->
+                                <button id="theme-toggle-system" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 rounded-lg text-sm p-2.5">
+                                    <x-icons.computer-icon />
+                                </button>
+                            </div>
+                        </x-dropdown-link>
+
                         <x-dropdown-link :href="route('profile')" wire:navigate>
                             {{ __('Profile') }}
                         </x-dropdown-link>
@@ -66,8 +94,16 @@ new class extends Component
                 </x-dropdown>
             </div>
 
+
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">
+                <div class="flex items-center relative mx-2">
+                    <div class="absolute w-4 h-4 bg-red-500 border-1 border-white rounded-full top-0 right-0 transform translate-x-1/2 -translate-y-1/2 dark:border-gray-900 flex justify-center items-center text-white text-xs">
+                        <span style="font-size: 10px;" class="text-white flex justify-center items-center">11</span>
+                    </div>
+                    <x-icons.bell-icon class="h-5 w-5 text-gray-500 dark:text-gray-400 cursor-pointer"
+                        type="button" data-drawer-target="drawer-right-notification" data-drawer-show="drawer-right-notification" data-drawer-placement="right" aria-controls="drawer-right-notification" />
+                </div>
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out uppercase">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -106,5 +142,21 @@ new class extends Component
                 </button>
             </div>
         </div>
+    </div>
+
+    <!-- Drawer Notification component -->
+    <div id="drawer-right-notification" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 md:w-1/4 dark:bg-gray-800 ease-in-out duration-300" tabindex="-1" aria-labelledby="drawer-right-label">
+        <h5 id="drawer-right-label" class="inline-flex items-center mb-4 text-base font-semibold dark:text-white">
+            Notifications <span class="text-red-500 dark:text-white dark:bg-red-500 border dark:border-gray-900 rounded-full px-1 mx-1 text-xs text-center">11</span>
+        </h5>
+        <button type="button" data-drawer-hide="drawer-right-notification" aria-controls="drawer-right-notification" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+            <x-icons.x-icon />
+            <span class="sr-only">Close menu</span>
+        </button>
+        <div class="flex justify-start items-center space-x-4 mb-2">
+            <h2 class="text-sm font-medium text-gray-500 dark:text-yellow-400 cursor-pointer">Mark as All Read</h2>
+            <h2 class="text-sm font-medium text-gray-500 dark:text-red-400 cursor-pointer">Clear All</h2>
+        </div>
+        <hr class="w-full border-gray-200 dark:border-gray-700">
     </div>
 </nav>
