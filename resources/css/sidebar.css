@@ -130,10 +130,17 @@
     > ul{
       padding: 0;
       display: grid;
-      grid-auto-columns: 60px;
+      grid-auto-columns: 65px;
       grid-auto-flow: column;
       align-items: center;
+      justify-content: center;
       overflow-x: scroll;
+      width: 100%;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    > ul::-webkit-scrollbar {
+      display: none;
     }
     ul li{
       height: 100%;
