@@ -48,6 +48,13 @@ new class extends Component
                     </form>
                 </div>
 
+                <div class="hidden sm:flex items-center justify-center ml-4"
+                    x-data="{ time: new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila', hour12: false }) }"
+                    x-init="setInterval(() => time = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila', hour12: false }), 1000)">
+                    <p class="text-center text-gray-500 dark:text-white">
+                        {{ now()->format('l, F j, Y') }} <span x-text="time"></span>
+                    </p>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
