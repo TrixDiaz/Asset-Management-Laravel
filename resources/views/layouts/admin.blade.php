@@ -30,8 +30,9 @@
     <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <livewire:layout.navigation />
         <!-- Page Content -->
-        <main>
-            {{ $slot }}
+        <main class="dark:bg-gray-900 flex flex-row ">
+            <livewire:layout.sidebar />
+            <div class="mx-auto w-full">{{ $slot }}</div>
         </main>
     </div>
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
