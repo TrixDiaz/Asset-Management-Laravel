@@ -12,4 +12,8 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::view('users', 'users.index')
+    ->middleware(['auth', 'verified'])
+    ->name('users');
+
+require __DIR__ . '/auth.php';

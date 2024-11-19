@@ -56,6 +56,12 @@
                     <span class="text-gray-900 dark:text-gray-100">Calendar</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('users') }}" class="rounded-lg p-3 flex items-center gap-4 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700 no-underline">
+                    <x-icons.user-group-icon />
+                    <span class="text-gray-900 dark:text-gray-100">Users</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
