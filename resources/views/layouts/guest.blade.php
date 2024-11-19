@@ -28,7 +28,7 @@
 
 <body class="font-sans text-gray-900 antialiased">
     <!-- Button to toggle dark mode -->
-    <div class="flex justify-end bg-gray-100 dark:bg-gray-900 p-4">
+    <div class="fixed top-0 right-0 bg-gray-100 dark:bg-gray-900 p-4">
         <!-- Light mode button -->
         <button id="theme-toggle-light" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -48,17 +48,13 @@
             </svg>
         </button>
     </div>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-        <div>
-            <a href="/" wire:navigate>
-                <!-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> -->
-            </a>
-        </div>
 
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center bg-gray-100 dark:bg-gray-900">
+        <div class="w-full sm:max-w-md px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>
     </div>
+
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <!-- Script to toggle dark mode -->
     <script>
