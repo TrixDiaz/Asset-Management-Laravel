@@ -56,18 +56,39 @@ new #[Layout('layouts.guest')] class extends Component
             </label>
         </div>
 
-        <div class="mt-4">
+        <div class="flex items-center justify-end mt-4">
+            @if (Route::has('password.request'))
+            <a class="hover:underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>
+                {{ __('Forgot your password?') }}
+            </a>
+            @endif
+        </div>
+
+        <div class="mt-2">
             <x-primary-button class="w-full">
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
 
-        <div class="flex items-center justify-end mt-2">
-            @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>
-                {{ __('Forgot your password?') }}
-            </a>
-            @endif
+        <!-- Divider with or login with text -->
+        <div class="flex items-center my-2">
+            <div class="flex-grow border-t border-gray-300"></div>
+            <span class="px-3 text-gray-500 text-sm">OR</span>
+            <div class="flex-grow border-t border-gray-300"></div>
+        </div>
+
+        <!-- Social Media Login Buttons -->
+        <div class="mt-2 grid grid-cols-2 gap-4">
+            <div class="w-full">
+                <x-primary-button class="w-full">
+                    {{ __('Log in with Google') }}
+                </x-primary-button>
+            </div>
+            <div class="w-full">
+                <x-secondary-button class="w-full">
+                    {{ __('Log in with Github') }}
+                </x-secondary-button>
+            </div>
         </div>
     </form>
 </div>
