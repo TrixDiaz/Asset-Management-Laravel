@@ -22,8 +22,8 @@ new #[Layout('layouts.guest')] class extends Component
     public function register(): void
     {
         $validated = $this->validate([
-            'first_name' => ['required', 'string', 'lowercase', 'max:255'],
-            'last_name' => ['required', 'string', 'lowercase', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', 'min:8',  Rules\Password::defaults()],
         ]);
@@ -48,7 +48,7 @@ new #[Layout('layouts.guest')] class extends Component
                 id="first_name" 
                 x-model="value"
                 @input="$el.value = $el.value.replace(/[^a-zA-Z\s]/g, '')"
-                class="block mt-1 w-full uppercase" 
+                class="block mt-1 w-full" 
                 type="text" 
                 name="first_name" 
                 required 
@@ -65,7 +65,7 @@ new #[Layout('layouts.guest')] class extends Component
                 id="last_name" 
                 x-model="value"
                 @input="$el.value = $el.value.replace(/[^a-zA-Z\s]/g, '')"
-                class="block mt-1 w-full uppercase" 
+                class="block mt-1 w-full" 
                 type="text" 
                 name="last_name" 
                 required 
@@ -76,7 +76,7 @@ new #[Layout('layouts.guest')] class extends Component
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full uppercase" type="email" name="email" required autocomplete="username" />
+            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
